@@ -1,0 +1,15 @@
+GET https://api.openweathermap.org/data/2.5/weather?q=bandung&appid=ce49b3a96ffb8a6b037cd31bc4b6cfcf
+
+###
+POST http://localhost:8000
+Content-Type: application/json
+
+{
+    "city":"bandung"
+}
+
+###
+GET http://localhost:8000/suhu/pekanbaru
+
+###
+GET http://localhost:8000/gas?nama=diory
