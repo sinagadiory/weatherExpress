@@ -10,7 +10,7 @@ router.get("/suhu", weather.getOneCity)
 
 router.get("/", (req, res) => {
     fs.writeFileSync("app/models/history.json", "[]")
-    res.render("index", { weather: null, convert, history: null })
+    res.render("index", { weather: null, convert, history: null, err: null })
 })
 
 router.post("/search", weather.GetWeather)

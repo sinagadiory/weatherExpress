@@ -1,4 +1,4 @@
-GET https://api.openweathermap.org/data/2.5/weather?q=bandung&appid=ce49b3a96ffb8a6b037cd31bc4b6cfcf
+GET https://api.openweathermap.org/data/2.5/weather?q=swedia&appid=ce49b3a96ffb8a6b037cd31bc4b6cfcf
 
 ###
 POST http://localhost:8000

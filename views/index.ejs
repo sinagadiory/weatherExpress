@@ -27,6 +27,9 @@
         <div class="container">
             <div class="row">
                 <div class="hasil text-center" style="width: 65%;margin-left: auto;margin-right: auto;">
+                    <% if (weather==null && err!=null) { %>
+                        <h3 style="color: #8a6d3b;"><%= err  %>! </h3>
+                    <% } %>
                     <% if (weather!==null) { %>
                         <h2 style="color: #e96e50;"><%= weather.name %> </h2>
                         <table class="table mt-4">

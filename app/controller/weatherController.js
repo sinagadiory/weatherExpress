@@ -14,10 +14,11 @@ const getOneCity = (req, res) => {
             res.render("index", { weather: null, err: "Try again" })
         } else {
             let weather = JSON.parse(body)
-            res.render("index", { weather, convert, history })
+            res.render("index", { weather, convert, history, err: null })
         }
     })
 }
+
 
 
 const GetWeather = (req, res) => {
@@ -25,10 +26,15 @@ const GetWeather = (req, res) => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
     request(url, (err, response, body) => {
         if (err) {
-            res.render("index", { weather: null, err: "Try again" })
+            res.render("index", { weather: null, err: "Try again", history })
         } else {
             let weather = JSON.parse(body)
             weather.waktu = moment().format('lll');
+            console.log(weather.message)
+            if (weather.message != undefined) {
+                res.render("index", { weather: null, err: weather.message, history, convert })
+                return
+            }
             const ada = history.find((his) => (his.name == weather.name))
             if (!ada) {
                 history.unshift(weather)
@@ -46,7 +52,7 @@ const GetWeather = (req, res) => {
             waktu((result) => {
                 fs.writeFileSync("app/models/history.json", JSON.stringify(history))
                 console.log(result)
-                res.render("index", { weather, convert, history })
+                res.render("index", { weather, convert, history, err: null })
             })
         }
     })
