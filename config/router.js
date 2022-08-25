@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
     res.render("index", { weather: null, convert, history: null })
 })
 
-router.post("/", weather.GetWeather)
+router.post("/search", weather.GetWeather)
 
 
 module.exports = router
